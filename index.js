@@ -30,14 +30,31 @@ function makeTitleCase(word) {
 
 // Step 4 - Make a function which takes in the computer and user choice to play a round of the game 
 
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === "Paper" && computerSelection === "Paper") {
+        console.log("It's a tie!")
+    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        console.log("You Win!")
+    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        console.log("You Lose....")
+    } else if (playerSelection === "Rock" && computerSelection === "Rock") {
+        console.log("It's a tie!")
+    } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        console.log("You Win!")
+    } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+        console.log("You Lose....")
+    } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
+        console.log("It's a tie!")
+    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        console.log("You Win!")
+    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        console.log("You Lose....")
+    } else {
+        console.log("Sorry, an error occured. Perhaps a typo? Try Again.");
+        playRound(getPlayerChoice(), getComputerChoice());
+    }
+}
+
+playRound(getPlayerChoice(), getComputerChoice());
+
 // Step 5 - Make a function which is called game to play the round 5 times keeping score and revealing a winner
-
-
-
-
-
-
-
-
-
-
