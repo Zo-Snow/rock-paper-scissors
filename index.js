@@ -32,29 +32,59 @@ function makeTitleCase(word) {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "Paper" && computerSelection === "Paper") {
-        console.log("It's a tie!")
+        return "tie"
     } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-        console.log("You Win!")
+        return "win"
     } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-        console.log("You Lose....")
+        return "lose"
     } else if (playerSelection === "Rock" && computerSelection === "Rock") {
-        console.log("It's a tie!")
+        return "tie"
     } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        console.log("You Win!")
+        return "win"
     } else if (playerSelection === "Rock" && computerSelection === "Paper") {
-        console.log("You Lose....")
+        return "lose"
     } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
-        console.log("It's a tie!")
+        return "tie"
     } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-        console.log("You Win!")
+        return "win"
     } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-        console.log("You Lose....")
+        return "lose"
     } else {
-        console.log("Sorry, an error occured. Perhaps a typo? Try Again.");
-        playRound(getPlayerChoice(), getComputerChoice());
+        console.log("Sowwy.. typo? Computer should've gotten the score but i'll spare you.. No score for both..");
     }
 }
 
-playRound(getPlayerChoice(), getComputerChoice());
-
 // Step 5 - Make a function which is called game to play the round 5 times keeping score and revealing a winner
+
+function game() {
+    let userScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        // Modified playRound function to return an output instead of console logging 
+
+        let round = playRound(getPlayerChoice(), getComputerChoice());
+
+        if (round === "tie") {
+            userScore++;
+            computerScore++;
+            console.log("Tie!")
+        } else if (round === "win") {
+            userScore++;
+            console.log("Win!")
+        } else if (round === "lose") {
+            computerScore++;
+            console.log("Lose..")
+        } 
+    }
+    console.log("User: "+ userScore + " Computer: " +computerScore);
+    if (userScore > computerScore) {
+        console.log("You Win!! Yayyyy")
+    } else if (userScore === computerScore) {
+        console.log("It's a tie! hehe.. yay?")
+    } else {
+        console.log("Sorry... You lost.. Computer WON HEHE..")
+    }
+}
+
+game();
