@@ -11,23 +11,33 @@ function getComputerChoice() {
 let userScore = 0;
 let computerScore = 0;
 
-const buttons = document.querySelectorAll("button");
+const buttons = document.querySelectorAll(".button");
+const buttonAudio = new Audio("./sounds/pop.mp3");
 
 buttons.forEach((button) => {
     button.addEventListener('click', startGame);
 })
 
 function startGame(event) {
-    let playerSelection = event.target.value;
+    if (document.getElementById("start")) {
+        document.getElementById("start").remove();
+    }
+
+    document.querySelector(".container").removeAttribute("hidden");
+    buttonAudio.play();
+    
+    let playerSelection = event.target.innerText;
+
         let computerSelection = getComputerChoice();
         let currentRound = playRound(playerSelection, computerSelection);
 
         updateScore(currentRound);
+        displayImages(currentRound, playerSelection, computerSelection)
 
         document.getElementById("user-choice").textContent = `You Chose: ${playerSelection}`;
         document.getElementById("computer-choice").textContent = `Computer Chose: ${computerSelection}`;
         document.getElementById("user-score").textContent = `User Score: ${userScore}`;
-        document.getElementById("computer-score").textContent = `Computer Score: ${computerScore}`;
+        document.getElementById("computer-score").textContent = `${computerScore} :Computer Score`;
 
         checkWinner(currentRound);
 }
@@ -82,14 +92,63 @@ function checkWinner(round) {
 
     if (userScore === 5 || computerScore === 5) {
         buttons.forEach((button) => {
-            button.removeEventListener('click', startGame);
-            if (userScore > computerScore) {
-                document.getElementById("round").textContent = "You Won!! Hooray!!";
-            } else if (userScore < computerScore) {
-                document.getElementById("round").textContent = "You Lost... Sorry";
-            } else {
-                document.getElementById("round").textContent = "It's a tie!";
-            }
+            button.remove();
         })
+        if (userScore > computerScore) {
+            document.getElementById("round").textContent = "You Won!! Hooray!!";
+            document.getElementById("round").style = "font-size: 1.6rem";
+            removePreviousImages()
+            document.getElementById("final-image").setAttribute("src", "./images/win.png");
+        } else if (userScore < computerScore) {
+            document.getElementById("round").textContent = "You Lost... Sorry";
+            document.getElementById("round").style = "font-size: 1.6rem";
+            removePreviousImages()
+            document.getElementById("final-image").setAttribute("src", "./images/lose.png");
+        } else {
+            document.getElementById("round").textContent = "It's a tie!";
+            document.getElementById("round").style = "font-size: 1.6rem";
+            removePreviousImages()
+            document.getElementById("final-image").setAttribute("src", "./images/win.png");
+        }
     }
+}
+
+
+
+
+function displayImages(round, userChoice, computerChoice) {
+
+    if (computerChoice === "Rock") {
+        document.getElementById("computer-image").setAttribute("src", "./images/pc-rock.png")
+
+    } else if (computerChoice === "Paper") {
+        document.getElementById("computer-image").setAttribute("src", "./images/pc-paper.png")
+
+    } else {
+        document.getElementById("computer-image").setAttribute("src", "./images/pc-scissors.png")
+
+    }
+
+    if (round === "win" || round === "tie") {
+        if (userChoice === "Paper") {
+            document.getElementById("player-image").setAttribute("src", "./images/paper-win.png")
+        } else if (userChoice === "Rock") {
+            document.getElementById("player-image").setAttribute("src", "./images/rock-win.png")
+        } else {
+            document.getElementById("player-image").setAttribute("src", "./images/scissors-win.png")
+        }
+    } else if (round === "lose") {
+        if (userChoice === "Paper") {
+            document.getElementById("player-image").setAttribute("src", "./images/paper-lose.png")
+        } else if (userChoice === "Rock") {
+            document.getElementById("player-image").setAttribute("src", "./images/rock-lose.png")
+        } else {
+            document.getElementById("player-image").setAttribute("src", "./images/scissors-lose.png")
+        }
+    }
+}
+
+function removePreviousImages() {
+    document.getElementById("player-image").remove();
+    document.getElementById("computer-image").remove();
 }

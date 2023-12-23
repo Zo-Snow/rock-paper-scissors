@@ -1,0 +1,86 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Kalam', cursive;
+    font-size: 1.2rem;
+    background-image: url(./images/genevieve-lacroix.gif);
+    background-size: cover;
+    color: rgb(199, 212, 222);
+}
+
+#start {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+h1, p {
+    margin: 12px 0px 12px 0px;
+    
+}
+
+.score p{
+    margin: 0;
+}
+
+.main-container {
+    width: 800px;
+    background-color:#153f70b5;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap:10px;
+    margin: 0px 70px 0px 70px;
+}
+
+.row.buttons {
+    justify-content: center;
+    margin: 0px 0px 30px 0px;
+    gap: 30px;
+}
+
+.button {
+    background-color: #fe9ba6;
+    color: #fe9ba6;
+    background-image: url(./images/rock.png);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 140px;
+    height: 140px;
+    border-radius: 5px;
+    transition: transform .2s;
+}
+
+.button-clicked {
+    background-color: #d66875d4;
+    color: #ff7d8c00;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.575), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button:hover {
+    transform: scale(1.04);
+}
+
+.button.paper{
+    background-image: url(./images/paper-hand.png);
+}
+
+.button.scissors{
+    background-image: url(./images/scissors.png);
+}
+
+.image {
+    width: 100px;
+}
+
+#final-image {
+    width: 300px;
+}
+
+

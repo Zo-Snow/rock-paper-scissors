@@ -4,25 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scrissors</title>
+    <link href="./styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <h1>Rock, Paper & Scissors</h1>
+    <div class="main-container">
+        <h1>Rock, Paper & Scissors</h1>
 
-    <div class="container">
-        <p id="user-score">User Score: 0</p>
-        <p id="computer-score">Computer Score: 0</p>
-        <hr />
-        <p id="user-choice"> You Chose: </p>
-        <p id="computer-choice">Computer Chose: </p>
+        <h2 id="start">Choose your first move to start a game with the computer.</h2>
 
-        <p id="round"></p>
-        
+        <div class="container" hidden >
+
+            <div class="row">
+                <div class="column player">
+                    <p id="user-choice"></p>
+                    <img src="" id="player-image" class="image" alt="player choice image"/>
+                </div>
+                <div class="column computer">
+                    <p id="computer-choice"></p>
+                    <img src="" id="computer-image" class="image" alt="computer choice image"/>
+                </div>
+            </div>
+
+            <img src="" id="final-image" />
+
+            <div class="row score">
+                <p id="user-score"></p>
+                <p id="computer-score"></p>
+            </div>
+
+            <p id="round"></p>
+            
+        </div>
+    
+
+        <div class="row buttons">
+
+            <div class="button rock " >Rock</div>
+            <div class="button paper" >Paper</div>
+            <div class="button scissors" >Scissors</div>
+
+        </div>
+
     </div>
 
-    <button value="Rock">Rock</button>
-    <button value="Paper">Paper</button>
-    <button value="Scissors">Scissors</button>
+    <footer>@ zo.snow 2023</footer>
+
+    <audio autoplay loop>
+        <Source  src="./sounds/waves.mp3" type="audio/mp3" >
+        Your browser does not support audio file!
+        </audio>
 
     <script src="./index.js" charset="utf-8"></script>
 </body>
